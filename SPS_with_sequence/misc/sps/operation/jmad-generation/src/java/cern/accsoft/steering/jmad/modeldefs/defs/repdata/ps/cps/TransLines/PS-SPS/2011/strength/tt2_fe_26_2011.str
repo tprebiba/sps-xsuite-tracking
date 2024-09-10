@@ -1,0 +1,51 @@
+! tt2_fe_26_2010.str
+!
+! TT2 strength file for LHC PROTON BEAM at 26 GeV/c
+! These are the values for LHC beam when the quadrupoles
+! QKE58 inside the PS are NOT used for the extraction.
+! This file contains the K1 parameter of the quadrupoles
+!
+!
+!
+! Only the strength is given, not currents, because the OP software
+! have buildt-in calibration curves.  O.Berrig 24/11/2006
+!
+!
+! Optics operational since 17th October 2007, based on measurements
+! done  the 31th July 2007 (E.Benedetto)
+!
+!
+
+KQFO105   :=  0.20394437000;
+KQDE120   := -0.08760635913;
+KQFO135   :=  0.07869850886;
+KQDE150   := -0.06954970925;
+KQFO165   :=  0.07263829231;
+KQDE180   := -0.07244909000;
+KQFO205   :=  0.06097295000;
+KQDE210   := -0.10422642610;
+KQFO215   :=  0.07121418128;
+
+KQDE220.F := -0.1044314276;!-0.104431428;
+KQFO225.F :=  0.1068212719;! 0.106821272;
+KQDE240.F :=  KQDE220.F/1.001966885636;
+
+
+
+! additional quadrupoles:
+
+f:=0;
+KQDE163   = -0.0080336*f; ! KQDE163   := 0
+KQDE207   = -0.003284*f;  ! KQDE207   := 0
+KQDE213   = -0.005021*f;  ! KQDE213   := 0
+KQDE217   = -0.005021*f;  ! KQDE217   := 0
+
+
+! TT2 matching
+
+KQFO375   =     0.1321434752 ;
+
+
+
+return;
+

@@ -1,0 +1,20 @@
+! TT20 strength file.
+!
+! TT20 optics - for Slow Extraction in the North only - without Q-split
+! Based on extraction parameters calculated by M. Gyr (June 2007)
+! Initial conditions in TT20 and matching done on 09/11/2007 - G. Arduini
+! Installed in TT20 on 09/11/2007
+! The matching is performed up to the first splitter - rest unchanged
+
+TITLE,  ' TT20 optics';
+
+! Quadrupoles
+
+kqtad2502          =     -0.01012688924 ;
+kqtaf2503m         =     0.007608271023 ;
+kqtaf2507m         =      0.00886286975 ;
+kqtld2509m         =     -0.00709644798 ;
+kqnlf2511m         =     0.002507536221 ;
+
+
+RETURN;

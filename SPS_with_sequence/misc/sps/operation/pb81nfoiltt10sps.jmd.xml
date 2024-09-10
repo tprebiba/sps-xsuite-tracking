@@ -1,0 +1,42 @@
+<jmad-model-definition name="PB81NFOILTT10SPS">
+  <optics>
+    <optic name="SPSInjection-new_strn2_pb80-81-2018" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt10_sps_new_strn2_pb80-81-2018.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="SPSInjection-new_strn2_pb80-81-2018"/>
+  <sequences>
+    <sequence name="tt2tt10sps">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt10sps-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="32.738"/>
+            <bety value="10.561"/>
+            <alfx value="-3.074"/>
+            <alfy value="0.706"/>
+            <dx value="3.097"/>
+            <dy value="0.301"/>
+            <dpx value="0.25"/>
+            <dpy value="0.018"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt2tt10sps"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/lhc_beam_inj.madx"/>
+    <call-file location="RESOURCE" path="sequence/tt10sps.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt10sps/2016"/>
+  </path-offsets>
+</jmad-model-definition>

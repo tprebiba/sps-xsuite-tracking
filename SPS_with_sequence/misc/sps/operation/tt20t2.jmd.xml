@@ -1,0 +1,57 @@
+<jmad-model-definition name="TT20T2">
+  <optics>
+    <optic name="tt20t2_2015_pb_lowenergy_vert_ll" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t2_pb_lowenergy_vert_ll.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt20t2_2015_pb_lowenergy" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t2_pb_lowenergy.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt20t2_2015_protons_SE_noqsplit_vert_ll" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t2_protons_SE_noqsplit_vert_ll.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt20t2_2015_protons_SE_noqsplit" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t2_protons_SE_noqsplit.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="tt20t2_2015_pb_lowenergy_vert_ll"/>
+  <sequences>
+    <sequence name="tt20t2">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt20t2-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="46.4144684"/>
+            <bety value="117.3299884"/>
+            <alfx value="-3.087019543"/>
+            <alfy value="-3.251188218"/>
+            <dx value="-0.229082543"/>
+            <dy value="0.289"/>
+            <dpx value="0.01358783731"/>
+            <dpy value="0.00348"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt20t2"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/beam.madx"/>
+    <call-file location="RESOURCE" path="sequence/tt20t2.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt20t2/2015"/>
+  </path-offsets>
+</jmad-model-definition>

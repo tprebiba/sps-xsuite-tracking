@@ -1,0 +1,20 @@
+
+!--------------------------------------------------------------------------
+! MADX file for TT2/TT10 optics calculations
+! K.Hanke & M.Giovannozzi 1998, original version by G.Arduini
+! Converted to MADX June 2006 O.Berrig
+! This file is for protons at 26 GeV/c
+!--------------------------------------------------------------------------
+
+ title, 'TT2/TT10 optics. Protons - 26 GeV/c';
+
+ option, echo;
+!option, double;
+ option, RBARC=FALSE;
+! assign, ECHO=ECHO.PRT; 
+
+tol=1;
+!tol=1.*26/14;   ! 14GeV beam 
+
+
+ option, -echo;

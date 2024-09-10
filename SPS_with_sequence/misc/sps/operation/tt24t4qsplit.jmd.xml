@@ -1,0 +1,42 @@
+<jmad-model-definition name="TT24T4QSPLIT">
+  <optics>
+    <optic name="tt24t4_2015_protons_qsplit" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t4_protons_qsplit.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="tt24t4_2015_protons_qsplit"/>
+  <sequences>
+    <sequence name="tt24t4">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt24t4-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="12.99931448"/>
+            <bety value="23601.74353"/>
+            <alfx value="0.6256767894"/>
+            <alfy value="-1.765200982"/>
+            <dx value="-0.2930386996"/>
+            <dy value="0.5412460828"/>
+            <dpx value="0.01488526146"/>
+            <dpy value="2.666388455E-4"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt24t4"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/beam.madx"/>
+    <call-file location="RESOURCE" path="sequence/tt24t4.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt24t4/2015"/>
+  </path-offsets>
+</jmad-model-definition>

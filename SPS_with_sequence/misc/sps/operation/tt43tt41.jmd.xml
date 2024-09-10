@@ -1,0 +1,80 @@
+<jmad-model-definition name="TT43TT41">
+  <optics>
+    <optic name="2017_tt43tt41_initial_optics" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_initial_optics.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_new_mag_len" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_new_mag_len.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_fint_06" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_fint_06.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_fint_03" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_fint_03.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_fint_01" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_fint_01.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_edges" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_edges.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_edges_fint" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_edges_fint.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="2017_tt43tt41_final" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/tt43tt41_final.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="2017_tt43tt41_initial_optics"/>
+  <sequences>
+    <sequence name="tt43">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt43-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="5.0"/>
+            <bety value="5.0"/>
+            <alfx value="0.0"/>
+            <alfy value="0.0"/>
+            <dx value="0.0"/>
+            <dy value="0.0"/>
+            <dpx value="0.0"/>
+            <dpy value="0.0"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+          <monitor-invert-filters>
+            <regex-filter regex=".*" plane="H"/>
+          </monitor-invert-filters>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt43"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/tt43tt41.beam"/>
+    <call-file location="RESOURCE" path="sequence/tt43tt41.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt43tt41/2017"/>
+  </path-offsets>
+</jmad-model-definition>

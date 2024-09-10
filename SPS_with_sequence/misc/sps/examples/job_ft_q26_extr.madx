@@ -1,0 +1,46 @@
+system,"[ ! -e sps ] && [ -d /afs/cern.ch/eng/acc-models/sps/2021 ] && ln -nfs /afs/cern.ch/eng/acc-models/sps/2021 sps";
+system,"[ ! -e sps ] && git clone https://gitlab.cern.ch/acc-models/acc-models-sps -b 2021 sps";
+
+option, -echo;
+
+call,file="sps/sps.seq";
+call,file="sps/strengths/ft_q26_extr.str";
+
+beam;
+
+use,sequence=sps;
+
+twiss;
+
+call,file="sps/toolkit/macro.madx";
+
+qx0=26.66;
+qy0=26.58;
+
+exec, sps_match_tunes(qx0,qy0);
+
+twiss;
+
+
+klsda              =    -0.1015838313 ;
+klsdb              =    -0.1436646599 ;
+klsfa              =    0.02377458232 ;
+klsfb              =  0.0003590471046 ;
+klsfc              := klsfa            ;
+
+
+kLSE10602 := -0.11992*sps_on_extraction;
+kLSE22402 := -0.11992*sps_on_extraction;
+kLSE40602 := -0.11992*sps_on_extraction;
+kLSE52402 := -0.11992*sps_on_extraction;
+
+
+
+system, "test -f ft_q26_extr.str && rm ft_q26_extr.str";
+assign, echo="ft_q26_extr.str";
+print, text="! Optics for fixed target beams just before extraction";
+print, text="";
+assign, echo="terminal";
+
+exec,sps_save_optics("ft_q26_extr.str");
+

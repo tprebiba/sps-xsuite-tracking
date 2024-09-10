@@ -1,0 +1,5 @@
+<sequence-mapping>
+  <sequence name="sps" accelerator="SPS" particle-transfer="SPSRING">
+    <zone name="SPS" end="7000.0"/>
+  </sequence>
+</sequence-mapping>

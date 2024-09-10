@@ -1,0 +1,35 @@
+option, -echo;
+! Qh=22.13, QV=22.18 - no qsplit - chromaticity (0.0/0.0)  - SPS units
+! Q22 lattice
+
+
+kMBA  :=  8.445141542E-03;
+kMBB  :=  8.445141542E-03;
+
+
+klsda =         -0.0268449 ;
+klsdb =          -0.118119 ;
+klsfa =          0.0594952 ;
+klsfb =          0.0429914 ;
+klsfc =          0.0594952 ;
+
+kQD   := -0.01257768331;
+kQDA  :=  kQD*9./11.;
+kQF1  :=  0.01257544512;
+kQF1A :=  kQF1*9./11.;
+kQF2  :=  kQF1;
+kQF2A :=  kQF2*9./11.;
+
+
+kQFC2  =  kQF1;
+kQFC3  =  kQF1;
+kQDC2  =  kQD;
+kQDC3  =  kQD;
+
+
+option, echo;
+
+return;
+
+
+

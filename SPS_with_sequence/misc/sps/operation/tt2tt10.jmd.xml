@@ -1,0 +1,109 @@
+<jmad-model-definition name="TT2TT10">
+  <optics>
+    <optic name="Nominal LHC Optics" overlay="false">
+      <init-files>
+        <call-file path="ps/cps/TransLines/PS-SPS/2011/strength/tt2_fe_26_2011.str" parse="STRENGTHS"/>
+        <call-file path="ps/cps/TransLines/PS-SPS/2011/strength/tt10_fe_26_2011.str" parse="STRENGTHS"/>
+        <call-file path="sps/2008/strength/lhc_newwp_2008.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="Q=20 LHC Optics" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="TT2TT10forQ20.str" parse="STRENGTHS"/>
+        <call-file location="RESOURCE" path="SPS_Q20.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="Nominal LHC Optics"/>
+  <sequences>
+    <sequence name="tt2tt10">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt2-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="false"/>
+            <betx value="26.1431"/>
+            <bety value="10.883"/>
+            <alfx value="-2.2287"/>
+            <alfy value="0.762"/>
+            <dx value="3.0414"/>
+            <dy value="0.024"/>
+            <dpx value="0.25256"/>
+            <dpy value="-0.014"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+    <sequence name="tt2">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt2-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="false"/>
+            <betx value="26.1431"/>
+            <bety value="10.883"/>
+            <alfx value="-2.2287"/>
+            <alfy value="0.762"/>
+            <dx value="3.0414"/>
+            <dy value="0.024"/>
+            <dpx value="0.25256"/>
+            <dpy value="-0.014"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+    <sequence name="tt2tt10sps">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt2-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="false"/>
+            <betx value="26.1431"/>
+            <bety value="10.883"/>
+            <alfx value="-2.2287"/>
+            <alfy value="0.762"/>
+            <dx value="3.0414"/>
+            <dy value="0.024"/>
+            <dpx value="0.25256"/>
+            <dpy value="-0.014"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt2tt10"/>
+  <init-files>
+    <call-file location="RESOURCE" path="init0.madx"/>
+    <call-file path="ps/cps/TransLines/PS-SPS/2011/elements/tt2_2011.ele"/>
+    <call-file path="ps/cps/TransLines/PS-SPS/2011/elements/tt10_2011.ele"/>
+    <call-file location="RESOURCE" path="init1.madx"/>
+    <call-file location="RESOURCE" path="tt2_2011.seq"/>
+    <call-file path="ps/cps/TransLines/PS-SPS/2011/aperture/tt2_2011.dbx"/>
+    <call-file path="ps/cps/TransLines/PS-SPS/2011/sequence/tt10_2011.seq"/>
+    <call-file path="ps/cps/TransLines/PS-SPS/2011/aperture/tt10_2011.dbx"/>
+    <call-file path="sps/2008/elements/sps2008.ele"/>
+    <call-file path="sps/2008/aperture/aperturedb_1_2008.dbx"/>
+    <call-file path="sps/2008/strength/elements.str"/>
+    <call-file path="sps/2008/aperture/aperturedb_2_2008.dbx"/>
+    <call-file path="sps/2008/sequence/sps2008.seq"/>
+    <call-file path="sps/2008/aperture/aperturedb_3_2008.dbx"/>
+    <call-file location="RESOURCE" path="compose-sequences.madx"/>
+    <call-file location="RESOURCE" path="lhc_beam_DPPeqBucketheight.beamx"/>
+  </init-files>
+  <path-offsets>
+    <repository-offset value=""/>
+    <resource-offset value="tt2tt10"/>
+  </path-offsets>
+</jmad-model-definition>

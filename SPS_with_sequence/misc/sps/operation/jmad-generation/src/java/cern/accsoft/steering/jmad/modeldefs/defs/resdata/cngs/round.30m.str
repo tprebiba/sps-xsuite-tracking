@@ -1,0 +1,17 @@
+!
+!  rematched for round beam 30/30 m with dispersion match Feb 2012 / JW
+!
+!kqtn5               :=     -2.20552e-02;
+!kqtn6               :=      2.55835e-02;
+kqtn7               :=     -2.05352e-02;
+kqtn8               :=      2.50573e-02;
+kqtn9               :=     -6.93238e-03;
+kqtl10              :=     -1.01177e-02;
+kqtl11              :=      1.06003e-02;
+kqtl12              :=     -1.40000e-02;
+
+kqts12 := kqtl12 * 0.01425412681 / 0.01405266962 ;
+kqts10 := kqtl10 * 0.0107295543 / 0.0105969758 ;
+
+return;
+

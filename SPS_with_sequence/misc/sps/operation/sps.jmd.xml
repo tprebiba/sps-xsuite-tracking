@@ -1,0 +1,70 @@
+<jmad-model-definition name="SPS">
+  <optics>
+  <optic name="SPS-JMAD-TEST-2024v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/lhc_q20.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_lhc_injection.madx"/>
+      </init-files>
+    </optic>
+    <optic name="SPS-Q27-2024v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/lhc_q27.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_lhc_injection.madx"/>
+      </init-files>
+    </optic>
+      <optic name="SPS-LHC-Q20Q26-2024v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/lhc_q20-26.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_lhc_injection.madx"/>
+      </init-files>
+    </optic>
+    <optic name="SPS-LHC-Q20-2021v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/lhc_q20.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_lhc_injection.madx"/>
+      </init-files>
+    </optic>
+    <optic name="SPS-FT-Q26-2021v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/ft_q26.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_fixedtarget_injection.madx"/>
+      </init-files>
+    </optic>
+    <optic name="SPS-LHC-Q22-2021v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/lhc_q22.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_lhc_injection.madx"/>
+      </init-files>
+    </optic>
+    <optic name="SPS-LHC-Q26-2021v1" overlay="false">
+      <init-files>
+        <call-file path="strengths/lhc_q26.str" parse="STRENGTHS"/>
+        <call-file path="beams/beam_lhc_injection.madx"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="SPS-FT-Q26-2021v1"/>
+  <sequences>
+    <sequence name="sps">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="default-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="sps"/>
+  <init-files>
+    <call-file path="SPS_LS2_2020-05-26.seq"/>
+  </init-files>
+  <path-offsets>
+    <repository-prefix value="../"/>
+    <resource-prefix value="."/>
+  </path-offsets>
+</jmad-model-definition>
