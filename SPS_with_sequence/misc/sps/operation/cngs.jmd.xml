@@ -1,0 +1,47 @@
+<jmad-model-definition name="CNGS">
+  <optics>
+    <optic name="round.30m" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="round.30m.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="round.30m"/>
+  <sequences>
+    <sequence name="tt41">
+      <beam>
+        <particle value="PROTON"/>
+        <energy value="450.0"/>
+        <sige value="4.5E-4"/>
+        <npart value="1.05E11"/>
+      </beam>
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt41-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="false"/>
+            <betx value="16.85821"/>
+            <bety value="123.7823"/>
+            <alfx value="0.442003"/>
+            <alfy value="-3.453686"/>
+            <dx value="-0.246627"/>
+            <dy value="0.0"/>
+            <dpx value="0.0054976"/>
+            <dpy value="0.0"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt41"/>
+  <init-files>
+    <call-file location="RESOURCE" path="tt41.new-naming.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="cngs"/>
+  </path-offsets>
+</jmad-model-definition>

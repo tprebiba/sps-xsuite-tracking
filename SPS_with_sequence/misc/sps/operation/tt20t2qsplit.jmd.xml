@@ -1,0 +1,42 @@
+<jmad-model-definition name="TT20T2QSPLIT">
+  <optics>
+    <optic name="tt20t2_2015_protons_qsplit" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t2_protons_qsplit.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="tt20t2_2015_protons_qsplit"/>
+  <sequences>
+    <sequence name="tt20t2">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt20t2-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="19.18"/>
+            <bety value="119.7"/>
+            <alfx value="-1.95"/>
+            <alfy value="-3.2"/>
+            <dx value="-0.3031"/>
+            <dy value="0.289"/>
+            <dpx value="-0.0239"/>
+            <dpy value="0.00348"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt20t2"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/beam.madx"/>
+    <call-file location="RESOURCE" path="sequence/tt20t2.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt20t2/2015"/>
+  </path-offsets>
+</jmad-model-definition>

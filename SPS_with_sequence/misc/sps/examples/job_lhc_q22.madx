@@ -1,0 +1,31 @@
+system,"[ ! -e sps ] && [ -d /afs/cern.ch/eng/acc-models/sps/2021 ] && ln -nfs /afs/cern.ch/eng/acc-models/sps/2021 sps";
+system,"[ ! -e sps ] && git clone https://gitlab.cern.ch/acc-models/acc-models-sps -b 2021 sps";
+
+option, -echo;
+
+call,file="sps/sps.seq";
+call,file="sps/strengths/lhc_q22.str";
+
+beam;
+
+use,sequence=sps;
+
+twiss;
+
+call,file="sps/toolkit/macro.madx";
+
+qx0=22.13;
+qy0=22.18;
+
+exec, sps_match_tunes(qx0,qy0);
+
+twiss;
+
+system, "test -f lhc_q22.str && rm lhc_q22.str";
+assign, echo="lhc_q22.str";
+print, text="! Q22 Optics for LHC beams";
+print, text="";
+assign, echo="terminal";
+
+
+exec,sps_save_optics("lhc_q22.str");

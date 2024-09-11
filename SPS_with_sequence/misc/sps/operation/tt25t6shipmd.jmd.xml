@@ -1,0 +1,42 @@
+<jmad-model-definition name="TT25T6SHIPMD">
+  <optics>
+    <optic name="tt25t6_2015_protons_ship_MD" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/t6_protons_ship_MD.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="tt25t6_2015_protons_ship_MD"/>
+  <sequences>
+    <sequence name="tt25t6">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt25t6-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="60.6836"/>
+            <bety value="333.48"/>
+            <alfx value="-0.72829"/>
+            <alfy value="0.30124"/>
+            <dx value="0.47389"/>
+            <dy value="24.96"/>
+            <dpx value="-0.03355"/>
+            <dpy value="-0.03952"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt25t6"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/beam.madx"/>
+    <call-file location="RESOURCE" path="sequence/tt25t6.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt25t6/2015"/>
+  </path-offsets>
+</jmad-model-definition>

@@ -1,0 +1,24 @@
+! Optics for fixed target beams just before extraction
+
+! Tunes
+qx0                 =                        26.66 ;
+qy0                 =                        26.58 ;
+! Main Dipoles
+kmba                =               0.008445141542 ;
+kmbb                =               0.008445141542 ;
+! Main Quadrupoles
+kqd                 =         -0.01462412493447772 ;
+kqda               := kqd*9.0/11.0       ;
+kqf                 =          0.01465925685367615 ;
+kqfa               := kqf*9.0/11.0       ;
+! Main Sextupoles
+klsda               =                -0.1015838313 ;
+klsdb               =                -0.1436646599 ;
+klsfa               =                0.02377458232 ;
+klsfb               =              0.0003590471046 ;
+klsfc              := klsfa              ;
+! Extraction Sextupoles
+klse10602          := -0.11992*sps_on_extraction ;
+klse22402          := -0.11992*sps_on_extraction ;
+klse40602          := -0.11992*sps_on_extraction ;
+klse52402          := -0.11992*sps_on_extraction ;

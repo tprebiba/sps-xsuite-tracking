@@ -1,0 +1,31 @@
+system,"[ ! -e sps ] && [ -d /afs/cern.ch/eng/acc-models/sps/2021 ] && ln -nfs /afs/cern.ch/eng/acc-models/sps/2021 sps";
+system,"[ ! -e sps ] && git clone https://gitlab.cern.ch/acc-models/acc-models-sps -b 2021 sps";
+
+option, -echo, update_from_parent;
+
+call,file="sps/sps.seq";
+call,file="sps/strengths/lhc_q20.str";
+
+call,file="sps/aperture/aperturedb_classes.madx";
+call,file="sps/aperture/aperturedb_elements.madx";
+
+
+beam;
+
+use,sequence=sps;
+
+twiss;
+
+call,file="sps/toolkit/macro.madx";
+
+select,flag=twiss,clear;
+select,flag=twiss,
+       column=name,s,l,
+              lrad,angle,k1l,k2l,k3l,k1sl,k2sl,k3sl,hkick,vkick,kick,tilt,
+              betx,bety,alfx,alfy,dx,dpx,dy,dpy,mux,muy,x,y,px,py,t,pt,
+              wx,wy,phix,phiy,n1,ddx,ddy,ddpx,ddpy,
+              keyword,aper_1,aper_2,aper_3,aper_4,
+              apoff_1,apoff_2,
+              aptol_1,aptol_2,aptol_3,apertype,mech_sep;
+
+twiss,file=sps.tfs;

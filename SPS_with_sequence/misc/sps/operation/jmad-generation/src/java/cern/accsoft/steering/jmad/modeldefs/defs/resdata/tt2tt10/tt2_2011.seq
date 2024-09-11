@@ -1,0 +1,206 @@
+/******************************************************
+  History, tt2a:
+  complete TT2 sequence file, K.Hanke M.Giovannozzi 1998
+  version for stripping at s=70m and p=6.75GeV/c/u (ASM, 2001)
+  QDE150                    ! old: 28.5914 K.Hanke
+  STP152                    ! new M.Giovannozzi 08/04/98
+
+ 6 new elements for fast proton extraction at 26 GeV/c: tt2_fe_26
+ and the fast lead ion extraction (26 GeV/c equivalent proton):  tt2_fe_pb
+ Version for stripping at s=70m and p=6.75GeV/c/u (ASM, 2001)
+  qde163  New                M.Martini         2 June 2006
+  qde207  New                M.Martini         2 June 2006
+  strn    New ASM            M.Martini         2 June 2006
+  qde213  New                M.Martini         2 June 2006
+  qfo215  Modified length.   M.Martini         2 June 2006
+  qde217  New                M.Martini         2 June 2006
+
+
+ The tt2 monitors called: MSG always comes in pairs, and are of two types:
+ SEM WIRE      SEM GRID
+  MSG257        MSG258
+  MSG267        MSG268
+  MSG277        MSG278
+ The SEM wires are used for the LHC beam, while the SEM grids
+ are used for bigger beams. The SEM wires are separated by 0.5 mm
+ (except for the MSG267 where the HOR wires are separated by 0.35mm).
+ The SEM grids are separated by 2.5 mm.
+ Both SEM wires and SEM grids have both horizontal and vertical wires.
+
+ *******************************************************/
+
+
+/*
+tt2: sequence, refer=centre, l = 304.6954; ! NB: refer=entry is not used
+  tt2a                  , at =        0;
+  tt2b                  , at = 136.3114;
+  tt2c                  , at = 249.9449;
+endsequence;
+*/
+
+! bending magnet lengths:
+l.BVT = 2.20;
+l.BHZ = 1.85;
+l.BHZ167 = 1.4;
+
+tt2a: sequence, refer = centre, l = 136.3114;
+
+begtt2a           :  marker      , at =   0.00000;
+pointr                           , at =   0.00000;
+qfo105                           , at =   0.32250;
+vpi01             :  marker      , at =   3.40600; ! Estimated from drawing O.B.
+vvs10             :  marker      , at =   3.76900;
+mtv107            :  monitor     , at =   4.50700;
+bhz117                           , at =   7.03450;
+F16.BHZ117 : HKICKER, AT = 7.03450 + (l.BHZ / 2); ! added by KF
+qde120                           , at =   9.25950;
+bvt123                           , at =  11.65950;
+F16.BVT123 : VKICKER, AT = 11.65950 + (l.BVT / 2); ! added by KF
+tra126            :  monitor     , at =  13.41450;
+tfa127            :  monitor     , at =  13.41450;
+tfa128            :  monitor     , at =  13.41450;
+vpi12             :  marker      , at =  14.04350;
+qfo135                           , at =  15.67550;
+mtv138            :  monitor     , at =  16.67050;
+uwb136            :  monitor     , at =  17.16850; ! Estimated from drawing O.B.
+mto103            :  monitor     , at =  18.02950; ! Estimated from drawing O.B.
+bhz147                           , at =  19.57150;
+F16.BHZ147 : HKICKER, AT = 19.57150 + (l.BHZ / 2); ! added by KF
+vpi148            :  marker      , at =  21.20000; ! Estimated from photo O.B.
+qde150                           , at =  29.00350;
+udc151            :  leppu       , at =  31.68350;
+stp152            :  stopper     , at =  32.76950;
+vpi13             :  marker      , at =  34.87450; ! Estimated from drawing O.B.
+qde163                           , at =  37.40091;
+qfo165                           , at =  38.90640;
+bhz167                           , at =  40.90640;
+F16.BHZ167 : HKICKER, AT = 40.90640 + (l.BHZ167 / 2); ! added by KF
+bvt173                           , at =  44.25940;
+F16.BVT173 : VKICKER, AT = 44.25940 + (l.BVT / 2); ! added by KF
+stp176            :  stopper     , at =  46.29950;
+qde180                           , at =  47.92540;
+vvs20             :  marker      , at =  49.05240; ! Estimated from drawing O.B.
+mtv201            :  monitor     , at =  55.03440;
+ues202            :  monitor     , at =  55.62440;
+tra203            :  monitor     , at =  55.95240;
+qfo205                           , at =  57.09140;
+qde207                           , at =  58.92406;
+vpi24             :  marker      , at =  61.61206;
+ues208            :  monitor     , at =  62.37250;
+vpg1              :  marker      , at =  66.32540;
+strn              :  marker      , at =  69.58890;
+qde210                           , at =  71.78140;
+udc211            :  leppu       , at =  73.11540;
+bct212            :  marker      , at =  75.60000; ! Estimated from photo O.B.
+qde213                           , at =  78.68762;
+qfo215                           , at =  80.53140;
+qde217                           , at =  82.15394;
+vpi25             :  marker      , at =  87.29144;
+mtv218            :  monitor     , at =  88.59290;
+qde220            :  qde220.f    , at =  89.76140;
+qfo225            :  qfo225.f    , at =  98.99140;
+ues228            :  monitor     , at = 104.60150;
+mtv229            :  instrument  , at = 107.00000; ! guestimate from photo
+qde230            :  qde220.f    , at = 108.22140;
+qfo235            :  qfo225.f    , at = 117.45140;
+vpi26             :  marker      , at = 125.59390;
+qde240            :  qde240.f    , at = 126.68140;
+mtv241            :  instrument  , at = 127.09140; ! guestimate from photo
+edfa242           :  MARKER      , at = 131.87120; ! "Entre" point for the tank of the ERD
+dfa242            :  erd         , at = 132.46700;
+sdfa242           :  MARKER      , at = 133.06280; ! "Sortie point for the tank of the ERD
+qfo245            :  qfo225.f    , at = 135.91140;
+endtt2a           :  marker      , at = 136.31140;
+endsequence;
+
+
+
+
+
+tt2b: sequence, refer = centre, l = 113.6335;
+
+begtt2b           :  marker      , at =   0.00000;
+bti247                           , at =   1.87900; ! Bending the beam to AD
+bti248                           , at =   5.77460; !
+flnge248          :  marker      , at =   8.42010;
+qde250            :  qde240.f    , at =   8.83010;
+udc251            :  leppu       , at =  10.94010;
+edfa254           :  MARKER      , at =  15.99550; ! "Entre" point for the tank of the ERD
+dfa254            :  erd         , at =  16.59130;
+sdfa254           :  MARKER      , at =  17.18710; ! "Sortie point for the tank of the ERD
+qfo255            :  qfo225.f    , at =  18.06000;
+msg257            :  monitor     , at =  25.70000;
+msg258            :  monitor     , at =  26.28500;
+qde260            :  qde240.f    , at =  27.29000;
+vpi28             :  marker      , at =  28.37800;
+qfo265            :  qfo225.f    , at =  36.52000;
+msg267            :  monitor     , at =  44.16000;
+msg268            :  monitor     , at =  44.74500;
+qde270            :  qde240.f    , at =  45.75000;
+udc274            :  leppu       , at =  53.71090;
+qfo275            :  qfo225.f    , at =  54.98000;
+msg277            :  monitor     , at =  62.62000;
+msg278            :  monitor     , at =  63.20500;
+qde280            :  qde240.f    , at =  64.21000;
+vpi29             :  marker      , at =  65.29800;
+qfo285            :  qfo225.f    , at =  73.44000;
+vvs30             :  marker      , at =  81.81000;
+qde310            :  qde240.f    , at =  82.67000;
+udc311            :  leppu       , at =  84.75800;
+udc314            :  leppu       , at =  90.62990;
+qfo315            :  qfo225.f    , at =  91.90000;
+vpi310            :  marker      , at = 100.04450;
+qde320            :  qde240.f    , at = 101.13000;
+ues322            :  monitor     , at = 109.34850;
+qfo325            :  qfo225.f    , at = 110.36000;
+mtv326            :  monitor     , at = 111.16250;
+bhz327                           , at = 112.70850;
+endtt2b           :  marker      , at = 113.63350;
+endsequence;
+
+
+
+
+tt2c: sequence, refer = centre,  l=54.75050;
+
+begtt2c           :  marker      , at =   0.00000;
+qde330            :  qde240.f    , at =   5.95650;
+dhz337                           , at =  12.83650;
+qfo345            :  qfo225.f    , at =  15.18650;
+udc346            :  leppu       , at =  16.45850;
+vpg2              :  marker      , at =  22.25800; ! Estimated from drawing O.B.
+vpi311            :  marker      , at =  23.32900;
+qde350            :  qde240.f    , at =  24.41650;
+mtv352            :  monitor     , at =  25.25660;
+dvt353                           , at =  27.08170;
+qfo365            :  qfo225.f    , at =  33.64650;
+udc368            :  leppu       , at =  41.48950;
+qde370            :  qde240.f    , at =  44.15150;
+ychamber          :  marker      , at =  47.05950;
+tra372            :  marker      , at =  51.88650;
+mtv374            :  monitor     , at =  53.46800;
+qfo375                           , at =  54.35050;
+pointa            :  marker      , at =  54.75050;
+endtt2c           :  marker      , at =  54.75050;
+endsequence;
+
+
+
+/********************************************************
+ * BEAM DUMP LINE
+ * Can be connected directly at the end of TT2c
+ ********************************************************/
+
+tt2d: sequence, refer=centre, l=38.40210;
+
+begtt2d           :  marker      , at =   0.00000;
+qde380            :  qde240.f    , at =   8.83010;
+qfo385            :  qfo225.f    , at =  24.94010;
+tra386            :  tt2tra      , at =  25.76585;
+mtv387            :  tt2mtv      , at =  26.23510;
+tdu394            :  marker      , at =  31.20210; ! Dump
+endtt2d           :  marker      , at =  38.40210;
+endsequence;
+
+
+return;

@@ -1,0 +1,212 @@
+<jmad-model-definition name="TT66">
+  <optics>
+    <optic name="tt66_2014_fp1_0p1mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_0p1mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_0p2mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_0p2mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_0p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_0p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_0p7mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_0p7mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_1p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_1p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_2p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_2p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_2p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_2p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_3p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_3p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_3p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_3p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_4p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_4p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_0p1mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_0p1mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_0p2mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_0p2mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_0p25mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_0p25mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_0p3mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_0p3mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_0p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_0p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_0p7mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_0p7mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_1p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_1p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_1p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_1p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_2p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_2p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_2p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_2p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_3p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_3p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_3p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_3p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp2_4p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp2_4p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_0p1mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_0p1mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_0p2mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_0p2mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_0p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_0p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_0p7mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_0p7mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_1p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_1p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_1p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_1p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_2p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_2p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_2p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_2p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_3p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_3p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_3p5mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_3p5mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp3_4p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp3_4p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+    <optic name="tt66_2014_fp1_10p0mm" overlay="false">
+      <init-files>
+        <call-file location="RESOURCE" path="str/my_fp1_10p0mm.str" parse="STRENGTHS"/>
+      </init-files>
+    </optic>
+  </optics>
+  <default-optic ref-name="tt66_2014_fp1_0p1mm"/>
+  <sequences>
+    <sequence name="tt66">
+      <ranges>
+        <range name="ALL">
+          <madx-range first="#s" last="#e"/>
+          <twiss-initial-conditions name="tt66-twiss">
+            <chrom value="true"/>
+            <closed-orbit value="false"/>
+            <centre value="true"/>
+            <betx value="27.77906807"/>
+            <bety value="120.3992069"/>
+            <alfx value="0.6361188"/>
+            <alfy value="-2.706219"/>
+            <dx value="-0.598663"/>
+            <dy value="0.0"/>
+            <dpx value="0.01603536"/>
+            <dpy value="0.0"/>
+            <deltap value="0.0"/>
+          </twiss-initial-conditions>
+        </range>
+      </ranges>
+      <default-range ref-name="ALL"/>
+    </sequence>
+  </sequences>
+  <default-sequence ref-name="tt66"/>
+  <init-files>
+    <call-file location="RESOURCE" path="beam/beam.madx"/>
+    <call-file location="RESOURCE" path="sequence/tt66-v11.seq"/>
+  </init-files>
+  <path-offsets>
+    <resource-offset value="tt66/2014"/>
+  </path-offsets>
+</jmad-model-definition>
