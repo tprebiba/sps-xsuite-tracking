@@ -1,3 +1,0 @@
-
-eg = 400;
-Beam, particle=proton, energy=eg, bv=1;

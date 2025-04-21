@@ -1,8 +1,0 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!
-! Beam characteristics for the LHC beams at injection
-!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-Beam, particle=ion, mass=193.7, charge=82, energy = 36994.8; !451.15 form lsa
-DPP:=BEAM->SIGE*(BEAM->ENERGY/BEAM->PC)^2;

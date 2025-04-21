@@ -2,10 +2,10 @@
 
 # This script prepares the simulation directory for the simulation
 
-# Pull psb lattice from acc-models-psb repository on gitlab.cern.ch
-pull_acc_models_psb_files=false
-if [ "$pull_acc_models_psb_files" = true ]; then
-    echo "Pulling psb lattice from acc-models-psb repository on gitlab.cern.ch"
+# Pull sps lattice from acc-models-sps repository on gitlab.cern.ch
+pull_acc_models_sps_files=false
+if [ "$pull_acc_models_sps_files" = true ]; then
+    echo "Pulling sps lattice from acc-models-sps repository on gitlab.cern.ch"
     cd sps
     echo "Current directory: $(pwd)"
     source pull_acc-models-sps_files.sh
@@ -14,13 +14,28 @@ if [ "$pull_acc_models_psb_files" = true ]; then
     echo "Current directory: $(pwd)"
 fi
 
-# Configure madx lattice for xsuite (matching, cycling, etc.)
-python 001_get_PSB_line.py
+# Translates the lattice from MAD-X to Xsuite
+convert_line=false
+if [ "$convert_line" = true ]; then
+    python 001_get_SPS_line.py
+fi
 
-# Configure xsuite line for tracking (slicing, re-matching, etc.)
-python 004_prepare_for_tracking.py
+# Match tune and chroma
+python 002_match_tune_chroma.py
 
-# Particle distribution (multi-turn injection)
+# Set octupoles
+python 003_set_octupoles.py
+
+# Set RF
+python 004_set_RF.py
+
+# Lattice imperfections
+python 005_lattice_imperfections.py
+
+# Dynamical effects
+python 006_dynamical_effects.py
+
+# Generate particle distribution
 python 007_generate_particle_distribution.py
 
 # Configure paths on htcondor_executable for submission to htcondor

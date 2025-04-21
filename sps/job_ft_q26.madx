@@ -1,0 +1,37 @@
+! Following examples/job_ft_q26.madx
+
+option, -echo;
+
+call,file="SPS_LS2_2025-03-05.seq";
+call,file="ft_q26.str";
+!call,file="STANDARD_SPS_EYETS 2024-2025_05-MAR-2025.seq";
+
+beam;
+
+use,sequence=sps;
+
+twiss;
+
+call,file="macro.madx";
+
+qx0=26.62;
+qy0=26.58;
+
+call,file="match_tune.madx";
+
+twiss;
+
+call,file="match_chrom.madx";
+
+
+!exec, sps_match_tunes(qx0,qy0);
+
+twiss;
+
+system, "test -f ft_q26.str && rm ft_q26.str";
+assign, echo="ft_q26.str";
+print, text="!  Optics for fixed target beams";
+print, text="";
+assign, echo="terminal";
+
+exec,sps_save_optics("ft_q26.str");
