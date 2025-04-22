@@ -8,8 +8,8 @@ import matplotlib.gridspec as gridspec
 
 #%%
 png_dir = './'
-#source_dir = '../input/'
-source_dir = '../output/'
+source_dir = '../input/'
+#source_dir = '../output/'
 #source_dir = '../output/noOctupoles/'
 files = glob.glob(source_dir+'*.json')
 #files = files[0:15]
@@ -21,7 +21,6 @@ files = glob.glob(source_dir+'*.json')
 # Plot phase space a la pyorbit
 ##############################################
 for file in files:
-#for file in files[10:20]:
     print(file)
 
     df = pd.read_json(file)
@@ -49,9 +48,9 @@ for file in files:
     print('Number of particles: %s'%len(x))
     print('Number of lost particles: %s'%(len(df['x'])-len(x)))
 
-    bins=50 #500
+    bins=200 #500
     my_cmap = plt.cm.jet
-    my_cmap.set_under('w',0.1)
+    my_cmap.set_under('w',1)
     #f, axs = plt.subplots(2,2,figsize=(10,8),facecolor='white')
     #fontsize=15
     f, axs = plt.subplots(2,2,figsize=(7,5),facecolor='white')
@@ -63,23 +62,23 @@ for file in files:
     #ax.plot(x*1000., xp*1000.,ms=0.5,color='blue')
     ax.set_xlabel('x [mm]')
     ax.set_ylabel('xp [mrad]')
-    ax.set_xlim(-19,19)
-    ax.set_ylim(-1,1)
+    ax.set_xlim(-35,35)
+    ax.set_ylim(-2,2)
     #ax.set_xlim(-90,22)
     ax = axs[0,1]
     ax.hist2d(y*1000., yp*1000.,bins=bins, cmap=my_cmap, vmin=vmin)
     #ax.plot(y*1000., yp*1000.,ms=0.5,color='blue')
     ax.set_xlabel('y [mm]')
     ax.set_ylabel('yp [mrad]')
-    ax.set_xlim(-19,19)
-    ax.set_ylim(-1,1)
+    ax.set_xlim(-21,21)
+    ax.set_ylim(-2,2)
     ax = axs[1,0]
     ax.hist2d(x*1000., y*1000.,bins=bins, cmap=my_cmap, vmin=vmin)
     #ax.plot(x*1000., y*1000.,ms=0.5,color='blue')
     ax.set_xlabel('x [mm]')
     ax.set_ylabel('y [mm] ')
-    ax.set_xlim(-19,19)
-    ax.set_ylim(-19,19)
+    ax.set_xlim(-35,35)
+    ax.set_ylim(-21,21)
     ax = axs[1,1]
     ax.hist2d(z, dE,bins=bins, cmap=my_cmap, vmin=vmin)
     #ax.plot(z, dE,'.', c='blue', ms=1)

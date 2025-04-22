@@ -59,8 +59,8 @@ if _check_octupoles:
 #########################################
 print('Setting octupoles.')
 # Set octupole strengths
-line.vars['klod'] = p['klod']*100
-line.vars['klof'] = p['klof']*100
+line.vars['klod'] = p['klod']
+line.vars['klof'] = p['klof']
 
 #%%
 ########################################

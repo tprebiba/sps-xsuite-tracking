@@ -1,4 +1,3 @@
-#%%
 import xtrack as xt
 import json
 import numpy as np
@@ -11,7 +10,6 @@ print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 print('007_generate_particle_distribution.py')
 print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 
-#%%
 #########################################
 # Load SPS line
 #########################################
@@ -20,9 +18,9 @@ line = xt.Line.from_json('sps/sps_line_thick.json')
 line.build_tracker()
 Csps = line.get_length()
 
-#%%
 #########################################
-# Generate particle distribution
+# Generate and save particle distribution
+# to input/particles_initial.json
 #########################################
 print('Generating particles...')
 context = xo.ContextCpu()
@@ -50,9 +48,7 @@ elif p['longitudinal_shape'] == 'coasting':
                                 nemitt_x=p['nemitt_x'], nemitt_y=p['nemitt_y'], sigma_z=p['sigma_z'],
                                 particle_ref=line.particle_ref,
                                 line=line,
-                                #line=line_sc_off
                                 )
-    
     # "Force" coasting beam
     particles.zeta = np.random.uniform(-Csps/2, Csps/2, p['n_part'])
     #particles.delta = np.random.uniform(-1.36e-3, 1.36e-3, n_part) # not parabolic
@@ -66,4 +62,3 @@ with open('input/particles_initial.json', 'w') as fid:
     json.dump(particles.to_dict(), fid, cls=xo.JEncoder)
 print('Number of macroparticles: ', p['n_part'])
 print('Particles generated and saved to inputs/particles_initial.json.')
-# %%

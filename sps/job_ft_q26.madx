@@ -4,7 +4,7 @@ option, -echo;
 
 call,file="SPS_LS2_2025-03-05.seq";
 call,file="ft_q26.str";
-!call,file="STANDARD_SPS_EYETS 2024-2025_05-MAR-2025.seq";
+call,file="STANDARD_SPS_EYETS 2024-2025_05-MAR-2025.seq";
 
 beam;
 

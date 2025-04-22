@@ -1,4 +1,3 @@
-#%%
 from cpymad.madx import Madx
 import xtrack as xt
 import xpart as xp
@@ -8,7 +7,6 @@ print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 print('001_get_SPS_line.py')
 print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 
-#%%
 #########################################
 # Load line
 #########################################
@@ -25,16 +23,14 @@ line= xt.Line.from_madx_sequence(mad.sequence['sps'],
 print('SPS line loaded.')
 print('Line length: ', line.get_length())
 
-# %%
 #########################################
 # Add reference particle
 #########################################
 #line.particle_ref=xp.Particles(mass0=xp.PROTON_MASS_EV,gamma0=mad.sequence.sps.beam.gamma)
 #print('Reference particle added at gamma0=%s.'%(mad.sequence.sps.beam.gamma))
-line.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, gamma0=14.953)
-print('Reference particle added at gamma0=%s.' % (14.953))
+line.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, gamma0=p['gamma0'])
+print('Reference particle added at gamma0=%s.' % (p['gamma0']))
 
-#%%
 #########################################
 # Configure bends if thick
 #########################################
@@ -43,7 +39,6 @@ print('Reference particle added at gamma0=%s.' % (14.953))
 #print('Bend model configured for thick elements.')
 print('Bend model left as default.')
 
-#%%
 #########################################
 # Inspect elements, twiss and save
 #########################################
@@ -54,4 +49,3 @@ print('Twiss computed and saved to sps/sps_twiss_thick.pkl.')
 print('Working point of thick lattice: (Qx, Qy) = (%s, %s)'%(tw.qx, tw.qy))
 line.to_json('sps/sps_line_thick_madx-default.json')
 print('Line saved to sps/sps_line_thick_madx-default.json')
-# %%
