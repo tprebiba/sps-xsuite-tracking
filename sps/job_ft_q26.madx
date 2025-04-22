@@ -4,7 +4,11 @@ option, -echo;
 
 call,file="SPS_LS2_2025-03-05.seq";
 call,file="ft_q26.str";
-call,file="STANDARD_SPS_EYETS 2024-2025_05-MAR-2025.seq";
+
+! To include aperture
+! Following: https://gitlab.cern.ch/giadarol/acc-models-sps/-/blob/2025/xsuite/generate_model/001_generate_line_with_apertures_ldb_model.py
+!call,file="STANDARD_SPS_EYETS 2024-2025_05-MAR-2025.seq";
+!call,file="APERTURE_EYETS 2024-2025.seq";
 
 beam;
 

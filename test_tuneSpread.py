@@ -62,11 +62,11 @@ end = time.time()
 print(f'Tracking took {end-start} s')
 particles1 = particles.copy()
 
-if particles1._num_lost_particles == 0: # no particles were lost
-    _qx, _Jx = get_particle_tunes(particles0.x, particles0.px, particles1.x, particles1.px, tw['betx'][0], tw['alfx'][0],
-                                  tw['dx'][0], tw['dpx'][0], particles0.delta)
-    _qy, _Jy = get_particle_tunes(particles0.y, particles0.py, particles1.y, particles1.py, tw['bety'][0], tw['alfy'][0],
-                                  tw['dy'][0], tw['dpy'][0], particles0.delta)
+#if particles1._num_lost_particles == 0: # no particles were lost
+_qx, _Jx = get_particle_tunes(particles0.x, particles0.px, particles1.x, particles1.px, tw['betx'][0], tw['alfx'][0],
+                                tw['dx'][0], tw['dpx'][0], particles0.delta)
+_qy, _Jy = get_particle_tunes(particles0.y, particles0.py, particles1.y, particles1.py, tw['bety'][0], tw['alfy'][0],
+                                tw['dy'][0], tw['dpy'][0], particles0.delta)
 np.save('test/tuneSpread/qx_pic',_qx)
 np.save('test/tuneSpread/qy_pic',_qy)
 np.save('test/tuneSpread/jx_pic.npy',_Jx)

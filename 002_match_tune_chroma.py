@@ -94,6 +94,7 @@ print('klsdb0: %s'%line.vars['klsdb0']._value)
 # Re-twissing and saving
 #########################################
 print('Twiss after matching:')
+line.twiss_default['method'] = '4d' # no cavity
 tw = line.twiss() # ContextCpu by default
 print('Working point of thick lattice: (Qx, Qy) = (%s, %s)'%(tw.qx, tw.qy))
 print('Chromaticity of thick lattice (not normalized - as in MAD-X): (dQx, dQy) = (%s, %s)'%(tw.dqx, tw.dqy))

@@ -10,16 +10,21 @@ print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 #########################################
 # Load line
 #########################################
-mad = Madx()
-mad.chdir('sps')
-mad.call('job_ft_q26.madx') # note that a single cavity is installed close to the main one (br.c02)
-line= xt.Line.from_madx_sequence(mad.sequence['sps'],
-                                 deferred_expressions=True,
-                                 install_apertures=True,
-                                 #enable_field_errors=True, # field errors are not yet supported for thick elements
-                                 enable_align_errors=True,
-                                 allow_thick=True,
-                                 )
+# mad = Madx()
+# mad.chdir('sps')
+# mad.call('job_ft_q26.madx') # note that a single cavity is installed close to the main one (br.c02)
+# line= xt.Line.from_madx_sequence(mad.sequence['sps'],
+#                                  deferred_expressions=True,
+#                                  install_apertures=True,
+#                                  #enable_field_errors=True, # field errors are not yet supported for thick elements
+#                                  enable_align_errors=True,
+#                                  allow_thick=True,
+#                                  )
+line = xt.Line.from_json('sps/sps_with_aperture.json')
+line.vars.load_madx('sps/ft_q26.str')
+#line.vars.load_madx('sps/macro.madx')
+#line.vars.load_madx('sps/match_tune.madx')
+#line.vars.load_madx('sps/match_chrom.madx')
 print('SPS line loaded.')
 print('Line length: ', line.get_length())
 

@@ -15,7 +15,7 @@ p['bunch_intensity'] = 1.5e13/2100 # number of particles per bunch
 p['macrosize'] = p['bunch_intensity']/p['n_part'] # number of charges per macroparticle
 p['nemitt_x'] = 12e-6 # normalized emittance in x
 p['nemitt_y'] = 4e-6# normalized emittance in y
-p['sigma_z'] = (2.5/4)*0.99776*0.3 # bunch length in m (2.5ns based on Giulia's measurements, is it 4 sigma?)
+p['sigma_z'] = (5/4)*0.99776*0.3 # bunch length in m (2.5ns based on Giulia's measurements, is it 4 sigma?)
 p['longitudinal_shape'] = 'gaussian' # 'parabolic' or 'coasting' or 'gaussian'
 
 # Lattice: tunes, chromaticity, octupoles, imperfections, ...
