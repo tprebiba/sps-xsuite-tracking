@@ -22,6 +22,7 @@ particles = line.build_particles(
 
 num_turns = 500
 print('Now start tracking...')
+line.optimize_for_tracking()
 start = time.time()
 line.track(particles, num_turns=num_turns, turn_by_turn_monitor=True)
 print('Tracking finished')

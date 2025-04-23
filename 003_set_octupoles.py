@@ -1,4 +1,3 @@
-#%%
 import xtrack as xt
 import pandas as pd
 import xdeps as xd
@@ -8,7 +7,6 @@ print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 print('003_set_octupoles.py')
 print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~**~*~*~**~*~*~*')
 
-#%%
 #########################################
 # Load SPS line
 #########################################
@@ -17,7 +15,6 @@ line = xt.Line.from_json('sps/sps_line_thick.json')
 line.build_tracker()
 Csps = line.get_length()
 
-#%%
 #########################################
 # Check octupoles
 #########################################
@@ -53,7 +50,6 @@ if _check_octupoles:
     print(line.vars['klof']._info(limit=None))
     #print(line.vars['kloe']._info(limit=None))
 
-#%%
 #########################################
 # Set octupoles
 #########################################
@@ -62,7 +58,6 @@ print('Setting octupoles.')
 line.vars['klod'] = p['klod']
 line.vars['klof'] = p['klof']
 
-#%%
 ########################################
 # Get amplitude detuning coefficients
 ########################################
@@ -87,7 +82,6 @@ if _check_detuning:
     print('Amplitude detuning coefficients:')
     print(dtc)
 
-# %%
 #########################################
 # Re-twissing and saving
 #########################################

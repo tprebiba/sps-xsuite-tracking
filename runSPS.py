@@ -10,19 +10,11 @@ import os
 from lib.statisticalEmittance import StatisticalEmittance as stE
 from lib.online_plotting import plot_phasespace
 
-
-#%%
 #########################################
 # Load parameters
 #########################################
 from simulation_parameters import parameters as p
 source_dir = os.getcwd() + '/'
-# if p['ramp']:
-#     with open(source_dir+'time_tables/tunes.json', 'r') as fid:
-#         d = json.load(fid)
-#     for key in d:
-#         p[key] = d[key]
-
 
 #%%
 #########################################
@@ -30,9 +22,8 @@ source_dir = os.getcwd() + '/'
 #########################################
 context = p['context']
 line = xt.Line.from_json(source_dir+'sps/sps_line_thick.json')
-Csps = line.get_length() # 157.08 m
+Csps = line.get_length() # 6911.52
 print('Loaded SPS line from sps/sps_line_thick.json.')
-
 
 #%%
 #########################################
@@ -77,6 +68,28 @@ if p['install_space_charge']:
 else:
      print('Skipping space charge...')
 
+#%%
+#########################################
+# Install multi-bunch monitor
+#########################################
+if p['collective_monitor']:
+    print('Installing collective monitor')
+    import xwakes as xw
+    monitor = xw.CollectiveMonitor(
+        base_file_name='output/collective_monitor',
+        backend='hdf5', # 'json' or 'hdf5'
+        monitor_bunches=True,
+        monitor_slices=False,
+        monitor_particles=False,
+        flush_data_every=p['flush_data_every'],
+        zeta_range=(-p['bucket_length']/2, p['bucket_length']/2), # for each bunch
+        filling_scheme=p['filling_scheme'],
+        bunch_spacing_zeta=p['bunch_spacing_m'],
+    )
+    line.discard_tracker()
+    line.insert_element(index=0, element=monitor, name='collective_monitor')
+    line.build_tracker()
+    print('Collective monitor installed at the beginning of the line.')
 
 #%%
 #########################################
@@ -87,7 +100,6 @@ print('Tracker built')
 #line_sc_off = line.filter_elements(exclude_types_starting_with='SpaceCh') # to remove space charge
 #print('Keeping line_sc_off: line without space charge knobs.')
 
-
 #%%
 #########################################
 # Setup particles for injection
@@ -95,7 +107,6 @@ print('Tracker built')
 with open(source_dir+'input/particles_initial.json', 'r') as fid:
     particles = xp.Particles.from_dict(json.load(fid), _context=context)
 print('Loaded particles from input/particles_initial.json.')
-
 
 #%%
 #########################################
@@ -124,11 +135,15 @@ else:
     r = stE(context='CPU')
 output=[]
 intensity = []
-
+if ((p['collective_monitor']==False) and (p['install_space_charge']==False)):
+    print('Nocollective elements installed, optimizing line for tracking.')
+    line.optimize_for_tracking()
+    print('Line optimized for tracking.')
 
 #%%
 #########################################
 # Start tracking
+# To be improved
 #########################################
 num_turns = p['num_turns']
 print('Now start tracking...')

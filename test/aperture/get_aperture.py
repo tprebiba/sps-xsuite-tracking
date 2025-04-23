@@ -14,6 +14,20 @@ tw1 = line.twiss4d()
 aper = line.get_aperture_table(dx=1e-3, dy=1e-3,
                                x_range=(-0.1, 0.1), y_range=(-0.1, 0.1))
 
+#%% Check minimum apertures
+mask_min_x_high = np.where(aper['x_aper_high_discrete']==np.nanmin(aper['x_aper_high_discrete']))
+mask_min_x_low = np.where(abs(aper['x_aper_low_discrete'])==np.nanmin(np.abs(aper['x_aper_low_discrete'])))
+mask_min_y_high = np.where(aper['y_aper_high_discrete']==np.nanmin(aper['y_aper_high_discrete']))
+mask_min_y_low = np.where(abs(aper['y_aper_low_discrete'])==np.nanmin(np.abs(aper['y_aper_low_discrete'])))
+elements_at_min_x_high = aper['name'][mask_min_x_high]
+elements_at_min_x_low = aper['name'][mask_min_x_low]
+elements_at_min_y_high = aper['name'][mask_min_y_high]
+elements_at_min_y_low = aper['name'][mask_min_y_low]
+print('Elements with minimum aperture:')
+print('Positive x: %s at locations %s m with apertures %s mm'%(aper['name'][mask_min_x_high], aper['s'][mask_min_x_high], aper['x_aper_high_discrete'][mask_min_x_high]*1e3))
+print('Negative x: %s at locations %s m with apertures %s mm'%(aper['name'][mask_min_x_low], aper['s'][mask_min_x_low], aper['x_aper_low_discrete'][mask_min_x_low]*1e3))
+print('Positive y: %s at locations %s m with apertures %s mm'%(aper['name'][mask_min_y_high], aper['s'][mask_min_y_high], aper['y_aper_high_discrete'][mask_min_y_high]*1e3))
+print('Negative y: %s at locations %s m with apertures %s mm'%(aper['name'][mask_min_y_low], aper['s'][mask_min_y_low], aper['y_aper_low_discrete'][mask_min_y_low]*1e3))
 
 #%% Plotting
 f = plt.figure(figsize=(15, 5), facecolor='w')
@@ -67,4 +81,6 @@ ax.set_xlim(0, 1000)
 ax.legend(loc=0, fontsize=fontsize)
 
 f.tight_layout()
-f.savefig('aper_particle.png', dpi=300)
+#f.savefig('aper_particle.png', dpi=300)
+
+# %%

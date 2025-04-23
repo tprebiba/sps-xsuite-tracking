@@ -84,8 +84,8 @@ for file in files:
     #ax.plot(z, dE,'.', c='blue', ms=1)
     ax.set_xlabel('z [m]')
     ax.set_ylabel('dE [MeV] ')
-    ax.set_ylim(-35,35)
-    ax.set_xlim(-1, 1)
+    #ax.set_ylim(-35,35)
+    #ax.set_xlim(-1, 1)
     for ax in axs.flatten():
             ax.xaxis.label.set_size(fontsize)
             ax.yaxis.label.set_size(fontsize)
@@ -96,7 +96,42 @@ for file in files:
     #plt.savefig('%s/phasespace_%s.png'%(png_dir, turn), dpi=100)
     #plt.close(f)
 
+# %%
+##############################################
+# Plot only longitudinal phase space
+##############################################    
+for file in files:
+    print(file)
 
+    df = pd.read_json(file)
+
+    try:
+         turn = int(file.split('_')[-1].split('.')[0])
+    except:
+         turn = '00'
+    z = df['zeta']
+    dE = df['ptau']*df['p0c']/1e6
+
+    bins=200 #500
+    my_cmap = plt.cm.jet
+    my_cmap.set_under('w',1)
+    f, ax = plt.subplots(1,1,figsize=(12,3),facecolor='white')
+    fontsize=10
+    f.suptitle('Turn %s'%turn, fontsize=fontsize)
+    vmin = 0.1 # the smaller it is, the less sensitive is the colormap
+    #ax.hist2d(z, dE,bins=bins, cmap=my_cmap, vmin=vmin)
+    ax.plot(z, dE,'.', c='blue', ms=0.1, alpha=1)
+    ax.set_xlabel('z [m]')
+    ax.set_ylabel('dE [MeV] ')
+    ax.set_xlim(-10, 0)
+    ax.xaxis.label.set_size(fontsize)
+    ax.yaxis.label.set_size(fontsize)
+    ax.tick_params(labelsize=fontsize)
+    #plt.suptitle('turn %s'%turn, fontsize=fontsize)
+    plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+    plt.show()
+
+    
 # %%
 ##############################################
 # Plot phase space a la xplt

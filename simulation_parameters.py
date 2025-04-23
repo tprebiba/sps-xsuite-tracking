@@ -1,22 +1,29 @@
 import xobjects as xo
 import numpy as np
+from scipy.constants import c
 
 p = {} 
 
 # Tracking parameters
 p['num_turns'] = 1200 # number of turns to track
-p['turns2saveparticles'] = [1,2,10,50, p['num_turns']-1] # turns to save particles object
+p['turns2saveparticles'] = [1,2,10,50, 100, 200, 300, 400, 500, p['num_turns']-1] # turns to save particles object
 p['turns2plot'] = [] # turns to plot phase space (while tracking)
+p['collective_monitor'] = True # if True, a collective monitor is installed in the line
+p['flush_data_every'] = 10 # flush data every n turns
 
 # Beam intensity and emittance
-p['gamma0'] = 14.953 # gamma relativistic for SFTPRO flat-bottom
-p['n_part'] = int(1e5) # number of macroparticles
-p['bunch_intensity'] = 1.5e13/2100 # number of particles per bunch
+p['gamma0'] = 14.953 # gamma relativistic for SFTPRO flat-bottom at 14 GeV/c
+p['beta0'] = 0.99776 # beta relativistic for SFTPRO flat-bottom at 14 GeV/c
+p['n_part'] = int(6e3) # total number of macroparticles
+p['number_of_bunches'] = 3 #420*5 # number of bunches
+p['total_intensity'] = 1.5e13 # total number of particles in the ring
+p['bunch_intensity'] = p['total_intensity']/p['number_of_bunches'] # number of particles per bunch
+p['bunch_spacing_m'] = 5e-9*p['beta0']*c # bunch spacing in m (5ns bucket length)
 p['macrosize'] = p['bunch_intensity']/p['n_part'] # number of charges per macroparticle
 p['nemitt_x'] = 12e-6 # normalized emittance in x
-p['nemitt_y'] = 4e-6# normalized emittance in y
-p['sigma_z'] = (5/4)*0.99776*0.3 # bunch length in m (2.5ns based on Giulia's measurements, is it 4 sigma?)
-p['longitudinal_shape'] = 'gaussian' # 'parabolic' or 'coasting' or 'gaussian'
+p['nemitt_y'] = 6.5e-6# normalized emittance in y
+p['sigma_z'] = (2.5e-9/4)*p['beta0']*c # bunch length in m (2.5ns based on Giulia's measurements, is it 4 sigma?)
+p['longitudinal_shape'] = 'gaussian' # 'parabolic' or 'coasting' or 'gaussian'; used only if 1 bunch
 
 # Lattice: tunes, chromaticity, octupoles, imperfections, ...
 # I prefer the (x,y) notation instead of (h,v) but I will keep the same name
@@ -38,6 +45,10 @@ p['prepare_acceleration'] = 1 # if 0 all cavities will be switched off
 p['v200'] = 1e6 # total RF voltage in V
 p['freq200'] = 200e6 # RF frequency in Hz
 p['lag200'] = 0#180 # RF phase
+p['h'] = 4621 # harmonic number freq200/frev
+p['bucket_length'] = 5e-9*p['beta0']*c # bucket length in m (5ns bucket length)
+p['filling_scheme'] = np.zeros(p['h'], dtype=int)
+p['filling_scheme'][0:p['number_of_bunches']] = 1 # each element holds a one if the slot is filled.
 # Octupoles
 p['klof'] = 0.8986 # focusing octupole strength in 1/m^4 (not integrated)
 p['klod'] = -0.9117 # defocusing octupole strength in 1/m^4 (not integrated)
@@ -50,7 +61,7 @@ p['element_to_cycle'] = None # line starts at the start of the 1st sector (NOT a
 
 # Setup space charge calculation
 p['install_space_charge'] = False # if True, space charge is installed
-p['space_charge_mode'] = 'pic' # 'frozen' or 'pic' or 'quasi-frozen'
+p['space_charge_mode'] = 'frozen' # 'frozen' or 'pic' or 'quasi-frozen'
 p['num_spacecharge_interactions'] = 160 # space charge interactions per turn
 p['pic_solver'] = 'FFTSolver2p5D' # `FFTSolver2p5DAveraged` or `FFTSolver2p5D` or 'FFTSolver3D'
 
