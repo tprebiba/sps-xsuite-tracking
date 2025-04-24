@@ -76,11 +76,12 @@ if p['collective_monitor']:
     print('Installing collective monitor')
     import xwakes as xw
     monitor = xw.CollectiveMonitor(
-        base_file_name='output/collective_monitor',
+        base_file_name='output/collective_monitor_10',
         backend='hdf5', # 'json' or 'hdf5'
         monitor_bunches=True,
-        monitor_slices=False,
+        monitor_slices=True,
         monitor_particles=False,
+        num_slices=p['num_slices_wakes'],
         flush_data_every=p['flush_data_every'],
         zeta_range=(-p['bucket_length']/2, p['bucket_length']/2), # for each bunch
         filling_scheme=p['filling_scheme'],
