@@ -32,8 +32,8 @@ python 004_set_RF.py
 # Lattice imperfections
 python 005_lattice_imperfections.py
 
-# Dynamical effects
-python 006_dynamical_effects.py
+# Wakes
+python 006_wakes.py
 
 # Generate particle distribution
 python 007_generate_particle_distribution.py

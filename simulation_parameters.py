@@ -14,9 +14,9 @@ p['flush_data_every'] = 10 # flush data every n turns
 # Beam intensity and emittance
 p['gamma0'] = 14.953 # gamma relativistic for SFTPRO flat-bottom at 14 GeV/c
 p['beta0'] = 0.99776 # beta relativistic for SFTPRO flat-bottom at 14 GeV/c
-p['n_part'] = int(6e3) # total number of macroparticles
+p['n_part'] = int(3e4) # total number of macroparticles
 p['number_of_bunches'] = 3 #420*5 # number of bunches
-p['total_intensity'] = 1.5e13 # total number of particles in the ring
+p['total_intensity'] = 1.5e13*p['number_of_bunches']/2100 # total number of particles in the ring
 p['bunch_intensity'] = p['total_intensity']/p['number_of_bunches'] # number of particles per bunch
 p['bunch_spacing_m'] = 5e-9*p['beta0']*c # bunch spacing in m (5ns bucket length)
 p['macrosize'] = p['bunch_intensity']/p['n_part'] # number of charges per macroparticle
@@ -64,6 +64,15 @@ p['install_space_charge'] = False # if True, space charge is installed
 p['space_charge_mode'] = 'frozen' # 'frozen' or 'pic' or 'quasi-frozen'
 p['num_spacecharge_interactions'] = 160 # space charge interactions per turn
 p['pic_solver'] = 'FFTSolver2p5D' # `FFTSolver2p5DAveraged` or `FFTSolver2p5D` or 'FFTSolver3D'
+
+# Setup wakefields
+p['install_wakes'] = False # if True, wakes are installed
+p['wakes_file_name'] = 'wakes/SPS_Q26.wake'
+p['wake_file_columns'] = ['time', 'dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y']
+p['use_components'] = ['dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y'] # columns to use from the wake table
+p['wake_scaling_factor'] = 1
+p['num_slices_wakes'] = 10 # number of bunch slices
+p['num_turns_wakes'] = 1 # number of turns to apply wakes
 
 # Setup resources
 p['GPU_FLAG'] = False # if True, GPU is used

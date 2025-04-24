@@ -93,6 +93,29 @@ if p['collective_monitor']:
 
 #%%
 #########################################
+# Install wakes
+#########################################
+if p['install_wakes']:
+    import xwakes as xw
+    waketable = xw.read_headtail_file(p['wakes_file_name'],p['wake_file_columns'])
+    for col in p['use_components']:
+        waketable[col] = waketable[col] * p['wake_scaling_factor']
+
+    wf = xw.WakeFromTable(waketable, columns=p['use_components'])
+    wf.configure_for_tracking(zeta_range=(-p['bucket_length']/2, p['bucket_length']/2),
+                            num_slices=p['num_slices_wakes'],
+                            bunch_spacing_zeta=p['bunch_spacing_m'],
+                            filling_scheme=p['filling_scheme'],
+                            num_turns=p['num_turns_wakes'],
+                            circumference=Csps
+                            )
+    line.discard_tracker()
+    line.insert_element(index=-1, element=wf, name='wakefield')
+    line.build_tracker()
+    print('Wakes installed at the end of the line.')
+
+#%%
+#########################################
 # Build tracker
 #########################################
 line.build_tracker(_context=context)
