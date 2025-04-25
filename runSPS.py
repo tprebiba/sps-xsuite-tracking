@@ -131,6 +131,7 @@ print('Tracker built')
 with open(source_dir+'input/particles_initial.json', 'r') as fid:
     particles = xp.Particles.from_dict(json.load(fid), _context=context)
 print('Loaded particles from input/particles_initial.json.')
+particles.reorganize() # to run on GPU in case particles are generated on CPU
 
 #%%
 #########################################
