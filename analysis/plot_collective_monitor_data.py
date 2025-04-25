@@ -115,7 +115,7 @@ cbar.ax.tick_params(labelsize=fontsize)
 # Plot turn-by-turn intrabunch motion for one bunch (quadrupolar)
 f, axs = plt.subplots(3, 1, figsize=(10, 8), facecolor='white')
 fontsize = 15
-labels = [r'$\sigma_x$ pickup [a.u.]', r'$\sigma_y$ pickul [a.u.]', r'$\sigma_{zeta}$ signal']
+labels = [r'$\sigma_x$ pickup [a.u.]', r'$\sigma_y$ pickup [a.u.]', r'$\sigma_{zeta}$ pickup']
 for ax, label in zip(axs, labels):
     ax.set_xlabel('Slice', fontsize=fontsize)
     ax.set_ylabel(label, fontsize=fontsize)
@@ -128,7 +128,7 @@ cmap = cm.viridis
 norm = mcolors.Normalize(vmin=turns.min(), vmax=turns.max())
 colors = cmap(norm(turns))
 for turn, color in zip(turns, colors):
-    w = 1# bunch_data[bunch]['num_particles'][turn] / 1e6
+    w =  bunch_data[bunch]['num_particles'][turn] / 1e6
     axs[0].plot(bunch_data[bunch]['sigma_x'][turn]*w, '-', lw=1, color=color)
     axs[1].plot(bunch_data[bunch]['sigma_y'][turn]*w, '-', lw=1, color=color)
     axs[2].plot(bunch_data[bunch]['sigma_zeta'][turn]*w, '-', lw=1, color=color)
