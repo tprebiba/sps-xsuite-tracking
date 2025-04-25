@@ -14,7 +14,7 @@ import matplotlib.colors as mcolors
 #################################################
 # Load bunch-by-bunch data using h5py
 source_dir = '../output/'
-files = glob.glob(source_dir+'collective_monitor*bunches.h5')
+files = glob.glob(source_dir+'collective_monitor*bunches0.h5')
 file = files[0]
 bunch_data = {}
 with h5py.File(file, 'r') as f:
@@ -73,7 +73,7 @@ plt.show()
 #################################################
 # Load slice-by-slice data using h5py
 source_dir = '../output/'
-files = glob.glob(source_dir+'collective_monitor*slices.h5')
+files = glob.glob(source_dir+'collective_monitor*slices0.h5')
 file = files[0]
 bunch_data = {}
 with h5py.File(file, 'r') as f:

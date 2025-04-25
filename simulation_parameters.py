@@ -8,14 +8,20 @@ p = {}
 p['num_turns'] = 1200 # number of turns to track
 p['turns2saveparticles'] = [1,2,10,50, 100, 200, 300, 400, 500, p['num_turns']-1] # turns to save particles object
 p['turns2plot'] = [] # turns to plot phase space (while tracking)
+
+# Collective monitor
 p['collective_monitor'] = True # if True, a collective monitor is installed in the line
 p['flush_data_every'] = 5 # flush data every n turns
+p['base_file_name'] = 'output/collective_monitor_10' # base file name for the collective monitor
+p['monitor_bunches'] = True # if True, the monitor will save data for all bunches
+p['monitor_slices'] = True # if True, the monitor will save data for all slices
+p['monitor_particles'] = False # if True, the monitor will save data for all particles (HEAVY)
 
 # Beam intensity and emittance
 p['gamma0'] = 14.953 # gamma relativistic for SFTPRO flat-bottom at 14 GeV/c
 p['beta0'] = 0.99776 # beta relativistic for SFTPRO flat-bottom at 14 GeV/c
-p['n_part'] = int(9e4) # total number of macroparticles
-p['number_of_bunches'] = 1 #420*5 # number of bunches
+p['n_part'] = int(1e5) # total number of macroparticles
+p['number_of_bunches'] = 100 #420*5 # number of bunches
 p['total_intensity'] = 2.4e13*p['number_of_bunches']/2100 # total number of particles in the ring
 p['bunch_intensity'] = p['total_intensity']/p['number_of_bunches'] # number of particles per bunch
 p['bunch_spacing_m'] = 5e-9*p['beta0']*c # bunch spacing in m (5ns bucket length)
@@ -44,12 +50,13 @@ p['injection_missteering_x'] = 0.0 # in m
 p['injection_missteering_y'] = 0.0 # in m
 # RF
 p['prepare_acceleration'] = 1 # if 0 all cavities will be switched off
-p['v200'] = 1e6 # total RF voltage in V
+p['v200'] = 1.8e6 # 0.8e6 total RF voltage in V
 p['freq200'] = 200e6 # RF frequency in Hz
 p['lag200'] = 0#180 # RF phase
 p['h'] = 4621 # harmonic number freq200/frev
 p['bucket_length'] = 5e-9*p['beta0']*c # bucket length in m (5ns bucket length)
 p['filling_scheme'] = np.zeros(p['h'], dtype=int)
+# gap between injections is 210 buckets
 p['filling_scheme'][0:p['number_of_bunches']] = 1 # each element holds a one if the slot is filled.
 # Octupoles
 p['klof'] = 0.8986 # focusing octupole strength in 1/m^4 (not integrated)
@@ -64,17 +71,17 @@ p['klod'] = -0.9117 # defocusing octupole strength in 1/m^4 (not integrated)
 # Setup space charge calculation
 p['install_space_charge'] = False # if True, space charge is installed
 p['space_charge_mode'] = 'frozen' # 'frozen' or 'pic' or 'quasi-frozen'
-p['num_spacecharge_interactions'] = 160 # space charge interactions per turn
+p['num_spacecharge_interactions'] = 200 # space charge interactions per turn
 p['pic_solver'] = 'FFTSolver2p5D' # `FFTSolver2p5DAveraged` or `FFTSolver2p5D` or 'FFTSolver3D'
 
 # Setup wakefields
-p['install_wakes'] = True # if True, wakes are installed
+p['install_wakes'] = False # if True, wakes are installed
 p['wakes_file_name'] = 'wakes/SPS_Q26.wake'
 p['wake_file_columns'] = ['time', 'dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y']
 p['use_components'] = ['dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y'] # columns to use from the wake table
-p['wake_scaling_factor'] = 50
-p['num_slices_wakes'] = 20 # number of bunch slices
-p['num_turns_wakes'] = 1 # number of turns to apply wakes
+p['wake_scaling_factor'] = 1
+p['num_slices_wakes'] = 20 # 100number of bunch slices
+p['num_turns_wakes'] = 7 # number of turns to apply wakes
 
 # Setup resources
 p['GPU_FLAG'] = False # if True, GPU is used

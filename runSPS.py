@@ -76,11 +76,11 @@ if p['collective_monitor']:
     print('Installing collective monitor')
     import xwakes as xw
     monitor = xw.CollectiveMonitor(
-        base_file_name='output/collective_monitor_10',
+        base_file_name=p['base_file_name'],
         backend='hdf5', # 'json' or 'hdf5'
-        monitor_bunches=True,
-        monitor_slices=True,
-        monitor_particles=False,
+        monitor_bunches=p['monitor_bunches'],
+        monitor_slices=p['monitor_slices'],
+        monitor_particles=p['monitor_particles'],
         num_slices=p['num_slices_wakes'],
         flush_data_every=p['flush_data_every'],
         zeta_range=(-p['bucket_length']/2, p['bucket_length']/2), # for each bunch
@@ -148,7 +148,7 @@ if p['prepare_acceleration'] == 0:
     print('All cavities switched off.')
     line.twiss_default['method'] = '4d'
     print('Twiss method set to 4d.')
-line.enable_time_dependent_vars = True
+line.enable_time_dependent_vars = False
 #line.dt_update_time_dependent_vars = 3e-6 # approximately every 3 turns
 line.vars.cache_active = False
 line.vars['t_turn_s'] = 0.0
