@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 
 #%%
 # Import wakes
-wakes_file_name = '../../wakes/SPS_Q26.wake'
+#wakes_file_name = '../../wakes/SPS_Q26.wake'
+wakes_file_name = '../../wakes/SPS_complete_wake_model_PostLS2_Q26.txt'
 wake_file_columns = ['time', 'dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y']
 waketable = xw.read_headtail_file(wakes_file_name,wake_file_columns)
 
@@ -46,7 +47,7 @@ ax.set_ylabel('Dipolar wake [V/pC/mm]', fontsize=fontsize)
 ax.tick_params(axis='both', which='major', labelsize=fontsize)
 ax.plot(waketable['time']*1e9, abs(waketable['dipole_x']*1e-15), label='H')
 ax.plot(waketable['time']*1e9, abs(waketable['dipole_y']*1e-15), label='V')
-ax.set_xlim(-0.1, 2000)
+#ax.set_xlim(-0.1, 2000)
 ax.legend(fontsize=fontsize)
 #for i in range(10):
 #    ax.axvline(i*5, color='k', linestyle='--', alpha=0.5)
@@ -58,10 +59,12 @@ ax.set_ylabel('Quadrupolar wake [V/pC/mm]', fontsize=fontsize)
 ax.tick_params(axis='both', which='major', labelsize=fontsize)
 ax.plot(waketable['time']*1e9, abs(waketable['quadrupole_x']*1e-15), label='H')
 ax.plot(waketable['time']*1e9, abs(waketable['quadrupole_y']*1e-15), label='V')
-ax.set_xlim(-0.1, 2000)
+#ax.set_xlim(-0.1, 1*4621)
+#ax.set_ylim(1e-3, 1e0)
 ax.legend(fontsize=fontsize)
-#for i in range(10):
-#    ax.axvline(i*5, color='k', linestyle='--', alpha=0.5)
+for i in range(10):
+    #ax.axvline(i*5, color='k', linestyle='--', alpha=0.5)
+    ax.axvline(i*5*4621, color='k', linestyle='--', alpha=0.5)
 ax.set_yscale('log')
 
 f.tight_layout()

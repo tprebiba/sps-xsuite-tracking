@@ -76,7 +76,7 @@ p['pic_solver'] = 'FFTSolver2p5D' # `FFTSolver2p5DAveraged` or `FFTSolver2p5D` o
 
 # Setup wakefields
 p['install_wakes'] = False # if True, wakes are installed
-p['wakes_file_name'] = 'wakes/SPS_Q26.wake'
+p['wakes_file_name'] = 'wakes/SPS_complete_wake_model_PostLS2_Q26.txt'
 p['wake_file_columns'] = ['time', 'dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y']
 p['use_components'] = ['dipole_x', 'dipole_y', 'quadrupole_x', 'quadrupole_y'] # columns to use from the wake table
 p['wake_scaling_factor'] = 1
