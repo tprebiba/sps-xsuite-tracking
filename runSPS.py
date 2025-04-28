@@ -89,7 +89,7 @@ if p['collective_monitor']:
     )
     line.discard_tracker()
     line.insert_element(index=0, element=monitor, name='collective_monitor')
-    line.build_tracker()
+    line.build_tracker(_context=context)
     print('Collective monitor installed at the beginning of the line.')
 
 #%%
@@ -108,11 +108,12 @@ if p['install_wakes']:
                             bunch_spacing_zeta=p['bunch_spacing_m'],
                             filling_scheme=p['filling_scheme'],
                             num_turns=p['num_turns_wakes'],
-                            circumference=Csps
+                            circumference=Csps,
+                            _context=context
                             )
     line.discard_tracker()
     line.insert_element(index=-1, element=wf, name='wakefield')
-    line.build_tracker()
+    line.build_tracker(_context=context)
     print('Wakes installed at the end of the line.')
 
 #%%
@@ -131,7 +132,7 @@ print('Tracker built')
 with open(source_dir+'input/particles_initial.json', 'r') as fid:
     particles = xp.Particles.from_dict(json.load(fid), _context=context)
 print('Loaded particles from input/particles_initial.json.')
-particles.reorganize() # to run on GPU in case particles are generated on CPU
+#particles.reorganize()
 
 #%%
 #########################################
@@ -149,18 +150,17 @@ if p['prepare_acceleration'] == 0:
     print('All cavities switched off.')
     line.twiss_default['method'] = '4d'
     print('Twiss method set to 4d.')
-line.enable_time_dependent_vars = False
+#line.enable_time_dependent_vars = False
 #line.dt_update_time_dependent_vars = 3e-6 # approximately every 3 turns
-line.vars.cache_active = False
-line.vars['t_turn_s'] = 0.0
-output = []
-if p['GPU_FLAG']:
-    r = stE(context='GPU')
-else:
-    r = stE(context='CPU')
-output=[]
-intensity = []
-if ((p['collective_monitor']==False) and (p['install_space_charge']==False)):
+#line.vars.cache_active = False
+#line.vars['t_turn_s'] = 0.0
+# output = []
+# if p['GPU_FLAG']:
+#     r = stE(context='GPU')
+# else:
+#     r = stE(context='CPU')
+# output=[]
+if ((p['collective_monitor']==False) and (p['install_space_charge']==False) and (p['install_wakes']==False)):
     print('Nocollective elements installed, optimizing line for tracking.')
     line.optimize_for_tracking()
     print('Line optimized for tracking.')
@@ -176,19 +176,19 @@ start = time.time()
 for ii in range(num_turns):
     print(f'Turn {ii} out of {num_turns}')
 
-    # keep particles within the ring circumference
-    particles.zeta = (particles.zeta+Csps/2)%Csps-Csps/2
+    # keep particles within the ring circumference when coasting
+    #particles.zeta = (particles.zeta+Csps/2)%Csps-Csps/2
 
     # track one turn
     #line.track(particles, turn_by_turn_monitor=True)
     line.track(particles, num_turns=1)
 
     # update output
-    bunch_moments=r.measure_bunch_moments(particles)
-    if p['GPU_FLAG']:
-        output.append([len(r.coordinate_matrix[0]),bunch_moments['nemitt_x'].tolist(),bunch_moments['nemitt_y'].tolist(),bunch_moments['emitt_z'].tolist(), np.mean((particles.x).get()), np.mean((particles.y).get()), np.mean((particles.zeta).get()), np.mean((particles.delta).get())])
-    else:
-        output.append([len(r.coordinate_matrix[0]),bunch_moments['nemitt_x'].tolist(),bunch_moments['nemitt_y'].tolist(),bunch_moments['emitt_z'].tolist(), np.mean(particles.x), np.mean(particles.y), np.mean(particles.zeta), np.mean(particles.delta)])
+    # bunch_moments=r.measure_bunch_moments(particles)
+    # if p['GPU_FLAG']:
+    #     output.append([len(r.coordinate_matrix[0]),bunch_moments['nemitt_x'].tolist(),bunch_moments['nemitt_y'].tolist(),bunch_moments['emitt_z'].tolist(), np.mean((particles.x).get()), np.mean((particles.y).get()), np.mean((particles.zeta).get()), np.mean((particles.delta).get())])
+    # else:
+    #     output.append([len(r.coordinate_matrix[0]),bunch_moments['nemitt_x'].tolist(),bunch_moments['nemitt_y'].tolist(),bunch_moments['emitt_z'].tolist(), np.mean(particles.x), np.mean(particles.y), np.mean(particles.zeta), np.mean(particles.delta)])
 
     # save every some turns
     if ii in p['turns2saveparticles']:
@@ -196,11 +196,9 @@ for ii in range(num_turns):
         with open(source_dir+f'output/particles_turn_{ii:05d}.json', 'w') as fid:
             json.dump(particles.to_dict(), fid, cls=xo.JEncoder)
             print(f'Particles saved to output/particles_turn_{ii:05d}.json.')
-        #np.save(source_dir+'output/distribution_'+str(int(ii)), r.coordinate_matrix)
-        #print(f'Distribution saved to output/distribution_{ii}.npy.')
-        ouput=np.array(output)
-        np.save(source_dir+'output/emittances', output)
-        print(f'Emittances saved to output/emittances.npy.')
+        #ouput=np.array(output)
+        #np.save(source_dir+'output/emittances', output)
+        #print(f'Emittances saved to output/emittances.npy.')
     
     # plot every some turns
     if ii in p['turns2plot']:
@@ -210,5 +208,5 @@ for ii in range(num_turns):
 end = time.time()
 print('Tracking finished.')
 print('Total seconds = ', end - start)
-np.save(source_dir+'output/emittances', output)
-print(f'Emittances saved to output/emittances.npy.')
+#np.save(source_dir+'output/emittances', output)
+#print(f'Emittances saved to output/emittances.npy.')
