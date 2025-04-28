@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#SBATCH --partition inf-short
+#SBATCH --time 06:00:00
+#SBATCH --ntasks 12
+#SBATCH --exclusive
+#SBATCH --hint=nomultithread
+
+simulation_info_file="${output_dir}/simulation_info.txt"
+
+# setup environment
+#source /hpcscratch/user/imasesso/spack/share/spack/setup-env.sh
+#spack env activate xsuite-env
+source /afs/cern.ch/work/t/tprebiba/python_environments/miniconda3/bin/activate >> ${simulation_info_file}
+conda activate xsuite-env >> ${simulation_info_file}
+echo >> ${simulation_info_file}
+echo "*****************************************************" >> ${simulation_info_file}
+
+# run job
+tstart=$(date +%s)
+srun -u --hint=nomultithread python runSPS.py
+tend=$(date +%s)
+dt=$(($tend - $tstart))
+echo 'total simulation time (s): ' $dt >> ${simulation_info_file}
