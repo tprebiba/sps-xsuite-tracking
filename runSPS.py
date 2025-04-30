@@ -21,7 +21,10 @@ source_dir = os.getcwd() + '/'
 # Load SPS line
 #########################################
 context = p['context']
-line = xt.Line.from_json(source_dir+'sps/sps_line_thick.json')
+if p['use_thin_for_tracking']:
+    line = xt.Line.from_json(source_dir+'sps/sps_line_thin.json')
+else:
+    line = xt.Line.from_json(source_dir+'sps/sps_line_thick.json')
 Csps = line.get_length() # 6911.52
 print('Loaded SPS line from sps/sps_line_thick.json.')
 
